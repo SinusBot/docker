@@ -5,8 +5,8 @@ case "$1" in
 "sinusbot")
 	echo "Downloading SinusBot..."
 	wget -qO - https://www.sinusbot.com/pre/sinusbot-0.13.37-f7e9ece.tar.bz2 | tar xj
-	sed -i "s|^TS3Path.*|TS3Path = \"/opt/sinusbot/TeamSpeak3-Client-linux_amd64/ts3client_linux_amd64\"|g" config.ini.dist
 	cp config.ini.dist config.ini
+	sed -i "s|^TS3Path.*|TS3Path = \"/opt/sinusbot/TeamSpeak3-Client-linux_amd64/ts3client_linux_amd64\"|g" config.ini
 	chmod +x sinusbot
 	echo "Successfully downloaded SinusBot"
 	;;

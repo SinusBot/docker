@@ -12,6 +12,6 @@ For that you can use the docker-compose file which is located [here](docker-comp
 ### docker
 
 ```
-docker run -d -p 8087:8087 -v scripts:/opt/ts3soundboard/scripts -v data:/opt/ts3soundboard/data sinusbot/docker
+docker run -d -p 8087:8087 -v scripts:/opt/sinusbot/scripts -v data:/opt/sinusbot/data sinusbot/docker
 ```
 
