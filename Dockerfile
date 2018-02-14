@@ -2,10 +2,9 @@ FROM debian:stretch-slim
 
 RUN apt-get update && apt-get install -y bzip2 wget less x11vnc xvfb libxcursor1 libnss3 libegl1-mesa libasound2 libglib2.0-0 python
 
-WORKDIR /opt/ts3soundboard
+WORKDIR /opt/sinusbot
 
 ADD install.sh .
-
 RUN chmod +x install.sh
 
 # Download/Install SinusBot
@@ -19,6 +18,6 @@ RUN bash install.sh youtube-dl
 
 EXPOSE 8087
 
-VOLUME ["/opt/ts3soundboard/data", "/opt/ts3soundboard/scripts"]
+VOLUME ["/opt/sinusbot/data", "/opt/sinusbot/scripts"]
 
-ENTRYPOINT ["/opt/ts3soundboard/sinusbot"]
+ENTRYPOINT ["/opt/sinusbot/sinusbot"]
