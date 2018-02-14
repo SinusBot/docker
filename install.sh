@@ -5,8 +5,8 @@ case "$1" in
 "sinusbot")
 	echo "Downloading SinusBot..."
 	wget -qO - https://www.sinusbot.com/pre/sinusbot-0.13.37-f7e9ece.tar.bz2 | tar xj
-    cp config.ini.dist config.ini
-    chmod +x /opt/ts3soundboard/sinusbot
+	cp config.ini.dist config.ini
+	chmod +x /opt/ts3soundboard/sinusbot
 	echo "Successfully downloaded SinusBot"
 	;;
 "teamspeak")
