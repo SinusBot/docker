@@ -1,0 +1,9 @@
+sinusbot:
+  build: sinusbot/docker
+  dockerfile: Dockerfile
+  restart: always
+  ports:
+    - 8087:8087
+  volumes:
+    - ./scripts:/opt/sinusbot/scripts
+    - ./data:/opt/sinusbot/data
