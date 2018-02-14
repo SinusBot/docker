@@ -5,8 +5,9 @@ case "$1" in
 "sinusbot")
 	echo "Downloading SinusBot..."
 	wget -qO - https://www.sinusbot.com/pre/sinusbot-0.13.37-f7e9ece.tar.bz2 | tar xj
+	sed -i "s|^TS3Path.*|TS3Path = \"/opt/sinusbot/TeamSpeak3-Client-linux_amd64/ts3client_linux_amd64\"|g" config.ini.dist
 	cp config.ini.dist config.ini
-	chmod +x /opt/ts3soundboard/sinusbot
+	chmod +x sinusbot
 	echo "Successfully downloaded SinusBot"
 	;;
 "teamspeak")
@@ -20,9 +21,9 @@ case "$1" in
 	echo "Downloaded TeamSpeak Client"
 
 	# Install TeamSpeak Client
-	chmod +x ./TeamSpeak3-Client-linux_amd64-$VERSION.run
+	chmod +x TeamSpeak3-Client-linux_amd64-$VERSION.run
 	yes | ./TeamSpeak3-Client-linux_amd64-$VERSION.run
-	rm ./TeamSpeak3-Client-linux_amd64-$VERSION.run
+	rm TeamSpeak3-Client-linux_amd64-$VERSION.run
 
 	# Copy SinusBot plugin
 	mkdir TeamSpeak3-Client-linux_amd64/plugins
@@ -36,7 +37,7 @@ case "$1" in
 	echo "Downloading youtube-dl..."
 	wget -q https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
 	chmod a+rx /usr/local/bin/youtube-dl
-	sed -i 's/YoutubeDLPath = \"\"/YoutubeDLPath = \"\/usr\/local\/bin\/youtube-dl\"/g' /opt/ts3soundboard/config.ini
+	sed -i 's/YoutubeDLPath = \"\"/YoutubeDLPath = \"\/usr\/local\/bin\/youtube-dl\"/g' config.ini
 	echo "Successfully installed youtube-dl"
 	;;
 esac
