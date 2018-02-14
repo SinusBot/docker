@@ -6,16 +6,15 @@ WORKDIR /opt/ts3soundboard
 
 ADD install.sh .
 
-# Installing SinusBot
-RUN wget -qO - https://www.sinusbot.com/pre/sinusbot-0.13.37-f7e9ece.tar.bz2 | tar xj && \
-    cp config.ini.dist config.ini && \
-    chmod +x /opt/ts3soundboard/sinusbot && \
-    chmod +x install.sh
+RUN chmod +x install.sh
 
-# Installing Teamspeak
+# Download/Install SinusBot
+RUN bash install.sh sinusbot
+
+# Download/Install TeamSpeak Client
 RUN bash install.sh teamspeak
 
-# Installing youtube-dl
+# Download/Install youtube-dl
 RUN bash install.sh youtube-dl
 
 EXPOSE 8087
