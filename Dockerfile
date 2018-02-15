@@ -10,7 +10,8 @@ RUN apt-get update && \
 
 WORKDIR /opt/sinusbot
 
-ADD install.sh .
+# Download the latest install.sh from the master branch
+ADD https://raw.githubusercontent.com/SinusBot/docker/master/install.sh .
 RUN chmod +x install.sh
 
 # Download/Install SinusBot
