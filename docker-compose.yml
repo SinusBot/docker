@@ -1,6 +1,5 @@
 sinusbot:
-  build: sinusbot/docker
-  dockerfile: Dockerfile
+  image: sinusbot/docker
   restart: always
   ports:
     - 8087:8087
