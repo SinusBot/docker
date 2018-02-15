@@ -32,6 +32,14 @@ PLEASE MAKE SURE TO CHANGE THE PASSWORD DIRECTLY AFTER YOUR FIRST LOGIN!!!
 [...]
 ```
 
+## Discord only image
+
+There exists an image for discord only usage, this won't contain the teamspeak client with the additonal dependencies. For that use the `discord` tag instead of the `latest` (default) tag:
+
+```bash
+docker run -d -p 8087:8087 -v scripts:/opt/sinusbot/scripts -v data:/opt/sinusbot/data --name sinusbot sinusbot/docker:discord
+```
+
 ## Updating the image
 
 Run the following command to update the image to the latest version:
