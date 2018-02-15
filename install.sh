@@ -5,9 +5,9 @@ case "$1" in
 "sinusbot")
 	echo "Downloading SinusBot..."
 	wget -qO - https://www.sinusbot.com/pre/sinusbot-0.13.37-f7e9ece.tar.bz2 | tar xj
-	cp config.ini.dist config.ini
-	sed -i "s|^TS3Path.*|TS3Path = \"/opt/sinusbot/TeamSpeak3-Client-linux_amd64/ts3client_linux_amd64\"|g" config.ini
 	chmod +x sinusbot
+	cp config.ini.dist config.ini
+	sed -i "s|^TS3Path.*|TS3Path = \"\"|g" config.ini
 	echo "Successfully downloaded SinusBot"
 	;;
 "teamspeak")
@@ -31,6 +31,9 @@ case "$1" in
 
 	# Remove glx-integration lib
 	rm TeamSpeak3-Client-linux_amd64/xcbglintegrations/libqxcb-glx-integration.so
+
+	# Set the TS3PATH to the config.ini
+	sed -i "s|^TS3Path.*|TS3Path = \"/opt/sinusbot/TeamSpeak3-Client-linux_amd64/ts3client_linux_amd64\"|g" config.ini
 	echo "Successfully installed the TeamSpeak Client"
 	;;
 "youtube-dl")
