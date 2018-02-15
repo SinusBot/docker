@@ -3,25 +3,26 @@
 [![Docker Automated build](https://img.shields.io/docker/automated/sinusbot/docker.svg)](https://hub.docker.com/r/sinusbot/docker/)
 [![Docker Build Status](https://img.shields.io/docker/build/sinusbot/docker.svg)](https://hub.docker.com/r/sinusbot/docker/builds/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/sinusbot/docker.svg)](https://hub.docker.com/r/sinusbot/docker/)
-[![](https://images.microbadger.com/badges/image/sinusbot/docker.svg)](https://microbadger.com/images/sinusbot/docker "Get your own image badge on microbadger.com")
+[![Image Info](https://images.microbadger.com/badges/image/sinusbot/docker.svg)](https://microbadger.com/images/sinusbot/docker)
 
 ## Installation
 
 ### docker-compose
 
-For that you can use the docker-compose file which is located [here](docker-compose.yml).
+Download the [docker-compose file](docker-compose.yml) in it's own directory and start it with `docker-compose up`.
 
 ### docker
 
-```
+```bash
 docker run -d -p 8087:8087 -v scripts:/opt/sinusbot/scripts -v data:/opt/sinusbot/data --name sinusbot sinusbot/docker
 ```
 
 ## Get Sinusbot Password
 
-After the SinusBot docker image will be started with the `docker run` command an ID will be returned in the next line.
-Use in the console the command `docker logs <ID>` and replace `<ID>` with the long Identifier for the docker container. This will print out the logs of the container.
-There should be an output on the top like this which contains your credentials:
+After starting the SinusBot docker image with `docker run` an ID will be returned in the next line.
+Use the command `docker logs <ID>` (replace `<ID>` with the long container ID) to print out the logs of the container.
+The beginning of the log should contain your credentials:
+
 ```
 [...]
 -------------------------------------------------------------------------------
@@ -30,18 +31,17 @@ PLEASE MAKE SURE TO CHANGE THE PASSWORD DIRECTLY AFTER YOUR FIRST LOGIN!!!
 -------------------------------------------------------------------------------
 [...]
 ```
-There is it, your username and your generated random password.
 
 ## Updating the image
 
 Run the following command to update the image to the latest version:
 
-```
+```bash
 docker pull sinusbot/docker
 ```
 
 After that you just need to restart your container, by executing the following command:
 
-```
+```bash
 docker restart CONTAINER_NAME
 ```
