@@ -1,8 +1,8 @@
 # SinusBot Docker image
 
-[![Docker Automated build](https://img.shields.io/docker/automated/sinusbot/docker.svg)](https://hub.docker.com/r/sinusbot/docker/)
-[![Docker Build Status](https://img.shields.io/docker/build/sinusbot/docker.svg)](https://hub.docker.com/r/sinusbot/docker/builds/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/sinusbot/docker.svg)](https://hub.docker.com/r/sinusbot/docker/)
+[![Docker Automated build](https://img.shields.io/docker/automated/sinusbot/docker.svg)](https://store.docker.com/community/images/sinusbot/docker)
+[![Docker Build Status](https://img.shields.io/docker/build/sinusbot/docker.svg)](https://store.docker.com/community/images/sinusbot/docker/builds)
+[![Docker Pulls](https://img.shields.io/docker/pulls/sinusbot/docker.svg)](https://store.docker.com/community/images/sinusbot/docker)
 [![Image Info](https://images.microbadger.com/badges/image/sinusbot/docker.svg)](https://microbadger.com/images/sinusbot/docker)
 
 ## Installation
