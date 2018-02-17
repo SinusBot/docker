@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 case "$1" in
 
@@ -8,6 +8,7 @@ case "$1" in
 	chmod +x sinusbot
 	cp config.ini.dist config.ini
 	sed -i "s|^TS3Path.*|TS3Path = \"\"|g" config.ini
+	mv scripts scripts_org
 	echo "Successfully downloaded SinusBot"
 	;;
 "teamspeak")
@@ -40,7 +41,7 @@ case "$1" in
 	echo "Downloading youtube-dl..."
 	wget -q https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
 	chmod a+rx /usr/local/bin/youtube-dl
-	sed -i 's/YoutubeDLPath = \"\"/YoutubeDLPath = \"\/usr\/local\/bin\/youtube-dl\"/g' config.ini
+	echo 'YoutubeDLPath = "/usr/local/bin/youtube-dl"' >> config.ini
 	echo "Successfully installed youtube-dl"
 	;;
 esac

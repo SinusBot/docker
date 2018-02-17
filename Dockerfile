@@ -22,8 +22,11 @@ RUN bash install.sh teamspeak
 # Download/Install youtube-dl
 RUN bash install.sh youtube-dl
 
+ADD entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
 EXPOSE 8087
 
 VOLUME ["/opt/sinusbot/data", "/opt/sinusbot/scripts"]
 
-ENTRYPOINT ["/opt/sinusbot/sinusbot"]
+ENTRYPOINT ["/opt/sinusbot/entrypoint.sh"]
