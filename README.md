@@ -14,7 +14,10 @@ Download the [docker-compose file](docker-compose.yml) in it's own directory and
 ### docker
 
 ```bash
-docker run -d -p 8087:8087 -v scripts:/opt/sinusbot/scripts -v data:/opt/sinusbot/data --name sinusbot sinusbot/docker
+docker run -d -p 8087:8087 \
+           -v scripts:/opt/sinusbot/scripts \
+           -v data:/opt/sinusbot/data \
+           --name sinusbot sinusbot/docker
 ```
 
 ## Get Sinusbot Password
@@ -37,7 +40,10 @@ PLEASE MAKE SURE TO CHANGE THE PASSWORD DIRECTLY AFTER YOUR FIRST LOGIN!!!
 There exists an image for discord only usage, this won't contain the teamspeak client with the additonal dependencies. For that use the `discord` tag instead of the `latest` (default) tag:
 
 ```bash
-docker run -d -p 8087:8087 -v scripts:/opt/sinusbot/scripts -v data:/opt/sinusbot/data --name sinusbot sinusbot/docker:discord
+docker run -d -p 8087:8087 \
+           -v scripts:/opt/sinusbot/scripts \
+           -v data:/opt/sinusbot/data \
+           --name sinusbot sinusbot/docker:discord
 ```
 
 ## Updating the image
