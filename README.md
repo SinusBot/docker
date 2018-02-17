@@ -35,6 +35,18 @@ PLEASE MAKE SURE TO CHANGE THE PASSWORD DIRECTLY AFTER YOUR FIRST LOGIN!!!
 [...]
 ```
 
+## Password overriding
+
+By setting the 'OVERRIDE_PASSWORD' environment variable you can override the password of the SinusBot:
+
+```bash
+docker run -d -p 8087:8087 \
+           -v scripts:/opt/sinusbot/scripts \
+           -v data:/opt/sinusbot/data \
+           -e OVERRIDE_PASSWORD=foobar \
+           --name sinusbot sinusbot/docker
+```
+
 ## Discord only image
 
 There exists an image for discord only usage, this won't contain the teamspeak client with the additonal dependencies. For that use the `discord` tag instead of the `latest` (default) tag:
