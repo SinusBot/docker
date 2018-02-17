@@ -9,7 +9,7 @@
 
 ### docker-compose
 
-Download the [docker-compose file](docker-compose.yml) in it's own directory and start it with `docker-compose up`.
+Download the [docker-compose file](https://github.com/SinusBot/docker/blob/master/docker-compose.yml) in it's own directory and start it with `docker-compose up`.
 
 ### docker
 
