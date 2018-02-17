@@ -73,3 +73,34 @@ After that you just need to restart your container, by executing the following c
 ```bash
 docker restart CONTAINER_NAME
 ```
+
+## Other Docker registries
+
+### QUAY
+
+[![Docker Repository on Quay](https://quay.io/repository/sinusbot/docker/status "Docker Repository on Quay")](https://quay.io/repository/sinusbot/docker)
+
+Can be pulled by using:
+
+```bash
+docker pull quay.io/sinusbot/docker
+```
+
+Also the discord image is available on the `discord` tag:
+
+```bash
+docker pull quay.io/sinusbot/docker:discord
+```
+
+For using docker-compose with [quay.io](https://quay.io) just replace `sinusbot/docker` with `quay.io/sinusbot/docker`. Example:
+
+```yaml
+sinusbot:
+  image: quay.io/sinusbot/docker
+  restart: always
+  ports:
+    - 8087:8087
+  volumes:
+    - ./scripts:/opt/sinusbot/scripts
+    - ./data:/opt/sinusbot/data
+```
