@@ -7,6 +7,8 @@
 
 ## Installation
 
+By using this image you accept the end user license agreement of TeamSpeak 3 and the license agreement of the SinusBot.
+
 ### docker-compose
 
 Download the [docker-compose file](https://github.com/SinusBot/docker/blob/master/docker-compose.yml) in it's own directory and start it with `docker-compose up`.
