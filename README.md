@@ -14,7 +14,10 @@ Download the [docker-compose file](https://github.com/SinusBot/docker/blob/disco
 ### docker
 
 ```bash
-docker run -d -p 8087:8087 -v scripts:/opt/sinusbot/scripts -v data:/opt/sinusbot/data --name sinusbot sinusbot/docker:discord
+docker run -d -p 8087:8087 \
+           -v scripts:/opt/sinusbot/scripts \
+           -v data:/opt/sinusbot/data \
+           --name sinusbot sinusbot/docker:discord
 ```
 
 ## For more information checkout the [README in the master branch](https://github.com/SinusBot/docker/blob/master/README.md).
