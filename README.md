@@ -37,7 +37,7 @@ PLEASE MAKE SURE TO CHANGE THE PASSWORD DIRECTLY AFTER YOUR FIRST LOGIN!!!
 
 ## Password overriding
 
-By setting the 'OVERRIDE_PASSWORD' environment variable you can override the password of the SinusBot:
+By setting the `OVERRIDE_PASSWORD` environment variable you can override the password of the SinusBot. Usage:
 
 ```bash
 docker run -d -p 8087:8087 \
