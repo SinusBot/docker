@@ -12,7 +12,7 @@ youtube-dl --restrict-filename -U
 echo "youtube-dl updated"
 
 echo "Starting SinusBot..."
-if [[ ! -v "${OVERRIDE_PASSWORD}" ]]; then
+if [[ -v "${OVERRIDE_PASSWORD}" ]]; then
   echo "Using the --override-password flag"
   ./sinusbot --override-password="${OVERRIDE_PASSWORD}"
 else
