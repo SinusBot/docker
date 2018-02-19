@@ -7,7 +7,7 @@
 
 ## Installation
 
-By using this image you accept the end user license agreement of TeamSpeak 3 and the license agreement of the SinusBot.
+By using this image you accept the [Privacy statement of the TeamSpeak Systems GmbH](https://www.teamspeak.com/en/policies) and the license agreement of the SinusBot.
 
 ### docker-compose
 
