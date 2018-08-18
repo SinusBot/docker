@@ -10,6 +10,7 @@ case "$1" in
 	sed -i "s|^TS3Path.*|TS3Path = \"\"|g" config.ini
 	mv scripts scripts_org
 	echo "Successfully downloaded SinusBot"
+	ln -s data/private.dat private.dat
 	;;
 "teamspeak")
 	echo "Installing TeamSpeak Client..."

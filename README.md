@@ -49,6 +49,10 @@ docker run -d -p 8087:8087 \
            --name sinusbot sinusbot/docker
 ```
 
+## License
+
+To use your license, which you've got from the [forums](https://forum.sinusbot.com/license) just drop the `private.dat` into the data folder. After that you can restart the SinusBot and the license should be applied.
+
 ## Discord only image
 
 There exists an image for discord only usage, this won't contain the teamspeak client with the additonal dependencies. For that use the `discord` tag instead of the `latest` (default) tag:
