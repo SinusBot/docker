@@ -22,7 +22,7 @@ docker run -d -p 8087:8087 \
            --name sinusbot sinusbot/docker
 ```
 
-## Get Sinusbot Password
+## Get Password
 
 After starting the SinusBot docker image with `docker run` an ID will be returned in the next line.
 Use the command `docker logs <ID>` (replace `<ID>` with the long container ID) to print out the logs of the container.
