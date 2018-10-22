@@ -4,7 +4,7 @@ LABEL maintainer="Max Schmitt <max@schmitt.mx>"
 LABEL description="SinusBot Docker Image for Discord only."
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates bzip2 wget python && \
+    apt-get install -y --no-install-recommends ca-certificates bzip2 wget curl python && \
     apt-get -q clean all && \
     rm -rf /tmp/* /var/tmp/*
 
