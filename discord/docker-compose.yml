@@ -1,0 +1,8 @@
+sinusbot:
+  image: sinusbot/docker:discord
+  restart: always
+  ports:
+    - 8087:8087
+  volumes:
+    - ./scripts:/opt/sinusbot/scripts
+    - ./data:/opt/sinusbot/data

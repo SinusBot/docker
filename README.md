@@ -28,7 +28,7 @@ After starting the SinusBot docker image with `docker run` an ID will be returne
 Use the command `docker logs <ID>` (replace `<ID>` with the long container ID) to print out the logs of the container.
 The beginning of the log should contain your credentials:
 
-```
+```txt
 [...]
 -------------------------------------------------------------------------------
 Generating new bot instance with account 'admin' and password 'YOUR_PASSWORD_HERE'
@@ -51,11 +51,13 @@ docker run -d -p 8087:8087 \
 
 ## License
 
-To use your license, which you've got from the [forums](https://forum.sinusbot.com/license) just drop the `private.dat` into the data folder. After that you can restart the SinusBot and the license should be applied.
+To use your license, which you've got from the [forums](https://forum.sinusbot.com/license) just drop the `private.dat` into the data folder.
+After that you can restart the SinusBot and the license should be applied.
 
 ## Discord only image
 
-There exists an image for discord only usage, this won't contain the teamspeak client with the additonal dependencies. For that use the `discord` tag instead of the `latest` (default) tag:
+There is an image for discord only usage, this won't contain the TeamSpeak client with the additonal dependencies.
+To use it you just have to use the `discord` tag instead of `latest` (default) tag:
 
 ```bash
 docker run -d -p 8087:8087 \

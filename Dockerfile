@@ -1,35 +1,33 @@
-FROM debian:stretch-slim
+FROM sinusbot/docker:discord
 
 LABEL maintainer="Max Schmitt <max@schmitt.mx>"
 LABEL description="Docker Image for the Teamspeak 3 and Discord MusicBot called SinusBot."
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates bzip2 wget less curl x11vnc xvfb libxcursor1 libnss3 libegl1-mesa libasound2 libglib2.0-0 python libxcomposite-dev jq procps && \
-    apt-get -q clean all && \
-    rm -rf /tmp/* /var/tmp/*
+RUN apt update \
+    && apt install -y --no-install-recommends ca-certificates bzip2 less curl x11vnc xvfb libxcursor1 libnss3 libegl1-mesa libasound2 libglib2.0-0 python libxcomposite-dev jq procps \
+    && apt -q clean all \
+    && rm -rf /tmp/* /var/tmp/*
 
-WORKDIR /opt/sinusbot
+# Install TeamSpeak Client
+RUN VERSION=$(curl -s https://www.teamspeak.com/versions/client.json | jq -r '.linux.x86_64.version') \
 
-ADD install.sh .
-RUN chmod +x install.sh
+	# Download TeamSpeak client
+	&& echo "Downloading TeamSpeak Client v$VERSION..." \
+	&& curl -s -o TeamSpeak3-Client-linux_amd64.run "http://dl.4players.de/ts/releases/$VERSION/TeamSpeak3-Client-linux_amd64-$VERSION.run" \
+	&& echo "Downloaded TeamSpeak Client" \
 
-# Download/Install SinusBot
-RUN bash install.sh sinusbot
+	# Install TeamSpeak Client
+	&& chmod +x TeamSpeak3-Client-linux_amd64.run \
+	&& yes | ./TeamSpeak3-Client-linux_amd64.run \
+	&& rm TeamSpeak3-Client-linux_amd64.run \
 
-# Download/Install TeamSpeak Client
-RUN bash install.sh teamspeak
+	# Copy SinusBot plugin
+	&& mkdir TeamSpeak3-Client-linux_amd64/plugins \
+	&& cp plugin/libsoundbot_plugin.so TeamSpeak3-Client-linux_amd64/plugins \
 
-# Download/Install youtube-dl
-RUN bash install.sh youtube-dl
+	# Remove glx-integration lib
+	&& rm TeamSpeak3-Client-linux_amd64/xcbglintegrations/libqxcb-glx-integration.so \
 
-ADD entrypoint.sh .
-RUN chmod +x entrypoint.sh
-
-EXPOSE 8087
-
-VOLUME ["/opt/sinusbot/data", "/opt/sinusbot/scripts"]
-
-ENTRYPOINT ["/opt/sinusbot/entrypoint.sh"]
-
-HEALTHCHECK --interval=1m --timeout=5s \
-  CMD curl -f http://localhost:8087/api/v1/botId || exit 1
+	# Set the TS3PATH to the config.ini
+	&& sed -i "s|^TS3Path.*|TS3Path = \"/opt/sinusbot/TeamSpeak3-Client-linux_amd64/ts3client_linux_amd64\"|g" config.ini \
+	&& echo "Successfully installed TeamSpeak Client"
