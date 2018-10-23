@@ -11,22 +11,14 @@ RUN apt update && \
 
 WORKDIR /opt/sinusbot
 
-# Install SinusBot
-RUN echo "Downloading SinusBot..." \
-	&& curl -s https://www.sinusbot.com/pre/sinusbot-0.14.3-0e747fd.tar.bz2 | tar xj \
-	&& chmod 755 sinusbot \
-	&& cp config.ini.dist config.ini \
-	&& sed -i "s|^TS3Path.*|TS3Path = \"\"|g" config.ini \
-	&& mv scripts default_scripts && \
-	&& ln -s data/private.dat private.dat \
-	&& echo "Successfully installed SinusBot"
+ADD install.sh .
+RUN chmod 755 install.sh
 
-# Install youtube-dl
-RUN echo "Downloading youtube-dl..." \
-	&& curl -s -o /usr/local/bin/youtube-dl https://yt-dl.org/downloads/latest/youtube-dl \
-	&& chmod 755 /usr/local/bin/youtube-dl \
-	&& echo 'YoutubeDLPath = "/usr/local/bin/youtube-dl"' >> config.ini \
-	&& echo "Successfully installed youtube-dl"
+# Download/Install SinusBot
+RUN bash install.sh sinusbot
+
+# Download/Install youtube-dl
+RUN bash install.sh youtube-dl
 
 ADD entrypoint.sh .
 RUN chmod 755 entrypoint.sh
