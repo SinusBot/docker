@@ -14,7 +14,7 @@ case "$1" in
 	;;
 "youtube-dl")
 	echo "Downloading youtube-dl..."
-	curl -s -o /usr/local/bin/youtube-dl https://yt-dl.org/downloads/latest/youtube-dl
+	curl -s -L -o /usr/local/bin/youtube-dl https://yt-dl.org/downloads/latest/youtube-dl
 	chmod 755 /usr/local/bin/youtube-dl
 	echo 'YoutubeDLPath = "/usr/local/bin/youtube-dl"' >> config.ini
 	echo "Successfully installed youtube-dl"
