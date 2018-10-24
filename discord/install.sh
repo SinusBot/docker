@@ -10,7 +10,7 @@ case "$1" in
 	ln -s data/private.dat private.dat
 	cp config.ini.dist config.ini
 	sed -i "s|^TS3Path.*|TS3Path = \"\"|g" config.ini
-    echo "Successfully installed SinusBot"
+	echo "Successfully installed SinusBot"
 	;;
 "youtube-dl")
 	echo "Downloading youtube-dl..."
