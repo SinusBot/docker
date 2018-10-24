@@ -21,12 +21,12 @@ case "$1" in
 	;;
 "teamspeak")
 	echo "Installing TeamSpeak Client..."
-	# Get latest TeamSpeak client version
-	VERSION=$(wget -q -O - https://www.teamspeak.com/versions/client.json | jq -r '.linux.x86_64.version')
+	# Get latest TeamSpeak client download URL
+	DOWNLOAD_URL=$(curl -s https://www.teamspeak.com/versions/client.json | jq -r '.linux.x86_64.mirrors["4Netplayers.de"]')
 
 	# Download TeamSpeak client
-	echo "Downloading TeamSpeak Client v$VERSION..."
-	curl -s -o TeamSpeak3-Client-linux_amd64.run "http://dl.4players.de/ts/releases/$VERSION/TeamSpeak3-Client-linux_amd64-$VERSION.run"
+	echo "Downloading TeamSpeak Client..."
+	curl -s -o TeamSpeak3-Client-linux_amd64.run "$DOWNLOAD_URL"
 
 	# Install TeamSpeak Client
 	chmod 755 TeamSpeak3-Client-linux_amd64.run

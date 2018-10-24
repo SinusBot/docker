@@ -5,7 +5,7 @@ LABEL description="SinusBot Docker Image for Discord only."
 
 # install dependencies and clean up afterwards
 RUN apt update && \
-    apt install -y --no-install-recommends ca-certificates bzip2 curl python && \
+    apt install -y --no-install-recommends ca-certificates bzip2 curl python procps && \
     apt -q clean all && \
     rm -rf /tmp/* /var/tmp/*
 
