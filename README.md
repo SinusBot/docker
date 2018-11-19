@@ -101,6 +101,7 @@ docker pull quay.io/sinusbot/docker:discord
 For using docker-compose with [quay.io](https://quay.io) just replace `sinusbot/docker` with `quay.io/sinusbot/docker`. Example:
 
 ```yaml
+# docker-compose.yml
 sinusbot:
   image: quay.io/sinusbot/docker
   restart: always
@@ -109,4 +110,41 @@ sinusbot:
   volumes:
     - ./scripts:/opt/sinusbot/scripts
     - ./data:/opt/sinusbot/data
+```
+
+## docker-compose with TeamSpeak 3 Server
+
+In the SinusBot you have to use the network alias `teamspeak.docker.local` as hostname. 
+
+```yaml
+# docker-compose.yml
+version: '2'
+services:
+  teamspeak:
+    image: teamspeak
+    restart: always
+    ports:
+      - 9987:9987/udp
+      - 10011:10011
+      - 30033:30033
+    environment:
+      TS3SERVER_LICENSE: accept
+    networks:
+      mynetwork:
+        aliases:
+          - teamspeak.docker.local
+
+  sinusbot:
+    image: sinusbot/docker
+    restart: always
+    ports:
+      - 8087:8087
+    volumes:
+      - ./scripts:/opt/sinusbot/scripts
+      - ./data:/opt/sinusbot/data
+    networks:
+     - mynetwork
+networks:
+    mynetwork:
+        driver: bridge
 ```
