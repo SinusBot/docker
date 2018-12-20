@@ -22,7 +22,7 @@ case "$1" in
 "teamspeak")
 	echo "Installing TeamSpeak Client..."
 	# Get latest TeamSpeak client download URL
-	DOWNLOAD_URL=$(curl -s https://www.teamspeak.com/versions/client.json | jq -r '.linux.x86_64.mirrors["4Netplayers.de"]')
+	DOWNLOAD_URL=$(curl -s https://www.teamspeak.com/versions/client.json | jq -r '.linux.x86_64.mirrors["teamspeak.com"]')
 
 	# Download TeamSpeak client
 	echo "Downloading TeamSpeak Client..."
