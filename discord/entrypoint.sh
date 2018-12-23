@@ -26,7 +26,7 @@ trap 'kill ${!}; kill_handler' SIGTERM # docker stop
 trap 'kill ${!}; kill_handler' SIGINT  # CTRL + C
 
 echo "Starting SinusBot..."
-if [[ -v "${OVERRIDE_PASSWORD}" ]]; then
+if [[ -v OVERRIDE_PASSWORD ]]; then
   echo "Overriding password..."
   ./sinusbot --override-password="${OVERRIDE_PASSWORD}" &
 else
