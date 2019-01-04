@@ -10,15 +10,15 @@ case "$1" in
 	chmod 755 sinusbot
 	mv scripts default_scripts
 	ln -s data/private.dat private.dat
-	cp config.ini.dist config.ini
-	sed -i "s|^TS3Path.*|TS3Path = \"\"|g" config.ini
+	cp config.ini.dist config.ini.configured
+	sed -i "s|^TS3Path.*|TS3Path = \"\"|g" config.ini.configured
 	echo "Successfully installed SinusBot"
 	;;
 "youtube-dl")
 	echo "Downloading youtube-dl..."
 	curl -s -L -o /usr/local/bin/youtube-dl https://yt-dl.org/downloads/latest/youtube-dl
 	chmod 755 /usr/local/bin/youtube-dl
-	echo 'YoutubeDLPath = "/usr/local/bin/youtube-dl"' >> config.ini
+	echo 'YoutubeDLPath = "/usr/local/bin/youtube-dl"' >> config.ini.configured
 	echo "Successfully installed youtube-dl"
 	;;
 "teamspeak")
@@ -43,7 +43,7 @@ case "$1" in
 	rm TeamSpeak3-Client-linux_amd64/xcbglintegrations/libqxcb-glx-integration.so
 
 	# Set the TS3Path to the config.ini
-	sed -i "s|^TS3Path.*|TS3Path = \"/opt/sinusbot/TeamSpeak3-Client-linux_amd64/ts3client_linux_amd64\"|g" config.ini
+	sed -i "s|^TS3Path.*|TS3Path = \"/opt/sinusbot/TeamSpeak3-Client-linux_amd64/ts3client_linux_amd64\"|g" config.ini.configured
 	echo "Successfully installed the TeamSpeak Client"
 	;;
 esac
