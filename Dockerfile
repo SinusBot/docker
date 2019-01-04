@@ -1,7 +1,7 @@
 FROM sinusbot/docker:discord
 
 LABEL maintainer="Max Schmitt <max@schmitt.mx>"
-LABEL description="Docker Image for the Teamspeak 3 and Discord MusicBot called SinusBot."
+LABEL description="Docker Image for the TeamSpeak 3 and Discord MusicBot called SinusBot."
 
 # Install dependencies and clean up afterwards
 RUN apt-get update \
