@@ -3,11 +3,10 @@ FROM debian:stretch-slim
 LABEL maintainer="Max Schmitt <max@schmitt.mx>"
 LABEL description="SinusBot Docker Image for Discord only."
 
-# install dependencies and clean up afterwards
-RUN apt update && \
-    apt install -y --no-install-recommends ca-certificates bzip2 curl python procps && \
-    apt -q clean all && \
-    rm -rf /tmp/* /var/tmp/*
+# Install dependencies and clean up afterwards
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ca-certificates bzip2 curl python procps && \
+    rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 WORKDIR /opt/sinusbot
 
