@@ -8,6 +8,12 @@ if [ -d "default_scripts" ]; then
   echo "Copied default scripts"
 fi
 
+if [ ! -f "data/config.ini" ]; then
+  cp config.ini.configured data/config.ini
+fi
+
+ln -fs data/config.ini config.ini
+
 echo "Updating youtube-dl..."
 youtube-dl --restrict-filename -U
 echo "youtube-dl was updated"
