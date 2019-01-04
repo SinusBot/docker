@@ -8,8 +8,7 @@ case "$1" in
 	echo "Downloading SinusBot..."
 	curl -s https://www.sinusbot.com/pre/sinusbot-0.14.3-0e747fd.tar.bz2 | tar xj
 	chmod 755 sinusbot
-	mkdir default_scripts
-	mv scripts/* default_scripts
+	mv scripts default_scripts
 	ln -s data/private.dat private.dat
 	cp config.ini.dist config.ini.configured
 	sed -i "s|^TS3Path.*|TS3Path = \"\"|g" config.ini.configured
