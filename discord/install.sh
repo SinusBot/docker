@@ -6,12 +6,27 @@ case "$1" in
 
 "sinusbot")
 	echo "Downloading SinusBot..."
-	curl -s https://www.sinusbot.com/pre/sinusbot-0.14.3-0e747fd.tar.bz2 | tar xj
+	curl -s https://www.sinusbot.com/pre/sinusbot-1.0.0-alpha.4-311d85f.tar.bz2 | tar xj
 	chmod 755 sinusbot
 	mv scripts default_scripts
 	ln -s data/private.dat private.dat
 	cp config.ini.dist config.ini.configured
 	sed -i "s|^TS3Path.*|TS3Path = \"\"|g" config.ini.configured
+
+	cd tts
+
+	mkdir tmp
+	cd tmp
+	curl -s https://chromium.googlesource.com/chromiumos/platform/assets/+archive/master/speech_synthesis/patts.tar.gz | tar -xz
+	unzip -q tts_service_x86_64.nexe.zip
+
+	mv tts_service_x86_64.nexe ..
+	mv voice_lstm_en-US.zvoice ..
+	mv voice_lstm_de-DE.zvoice ..
+
+	cd ..
+	rm -rf tmp
+
 	echo "Successfully installed SinusBot"
 	;;
 "youtube-dl")
