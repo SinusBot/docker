@@ -12,9 +12,11 @@ case "$1" in
 	ln -s data/private.dat private.dat
 	cp config.ini.dist config.ini.configured
 	sed -i "s|^TS3Path.*|TS3Path = \"\"|g" config.ini.configured
-
+	echo "Successfully installed SinusBot"
+	;;
+"text-to-speech")
+	echo "Installing Text-to-Speech..."
 	cd tts
-
 	mkdir tmp
 	cd tmp
 	curl -s https://chromium.googlesource.com/chromiumos/platform/assets/+archive/master/speech_synthesis/patts.tar.gz | tar -xz
@@ -26,8 +28,27 @@ case "$1" in
 
 	cd ..
 	rm -rf tmp
+	cd ..
 
-	echo "Successfully installed SinusBot"
+	cat <<EOT >> config.ini.configured
+[TTS]
+Enabled = false
+
+[[TTS.Modules]]
+Locale = "en-US"
+Filename = "voice_lstm_en-US.zvoice"
+PipelineFile = "voice_lstm_en-US/sfg/pipeline"
+Prefix = "voice_lstm_en-US/sfg/"
+Instances = 2
+
+[[TTS.Modules]]
+Locale = "de-DE"
+Filename = "voice_lstm_de-DE.zvoice"
+PipelineFile = "voice_lstm_de-DE/nfh/pipeline"
+Prefix = "voice_lstm_de-DE/nfh/"
+Instances = 2
+EOT
+	echo "Successfully installed Text-to-Speech"
 	;;
 "youtube-dl")
 	echo "Downloading youtube-dl..."

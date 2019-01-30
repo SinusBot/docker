@@ -16,6 +16,9 @@ RUN chmod 755 install.sh
 # Download/Install SinusBot
 RUN bash install.sh sinusbot
 
+# Download/Install Text-to-Speech
+RUN bash install.sh text-to-speech
+
 # Download/Install youtube-dl
 RUN bash install.sh youtube-dl
 
