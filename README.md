@@ -80,6 +80,12 @@ After that you just need to restart your container, by executing the following c
 docker restart CONTAINER_NAME
 ```
 
+## Text-to-Speech
+
+Per default, there is the Chromium Text-to-Speech engine pre installed. It can be simply enabled by setting the `TTS.Enabled` property in the `config.ini` of the `data` volume to `true`. It's per default disabled due performance issues / memory costs.
+
+Once it's enabled it can be used by setting in the Instance settings `en-US` or `de-DE` as locale.
+
 ## Other Docker registries
 
 ### QUAY

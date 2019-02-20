@@ -5,7 +5,7 @@ LABEL description="SinusBot Docker Image for Discord only."
 
 # Install dependencies and clean up afterwards
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates bzip2 curl python procps && \
+    apt-get install -y --no-install-recommends ca-certificates bzip2 unzip curl python procps && \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 WORKDIR /opt/sinusbot
@@ -15,6 +15,9 @@ RUN chmod 755 install.sh
 
 # Download/Install SinusBot
 RUN bash install.sh sinusbot
+
+# Download/Install Text-to-Speech
+RUN bash install.sh text-to-speech
 
 # Download/Install youtube-dl
 RUN bash install.sh youtube-dl
