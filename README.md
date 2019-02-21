@@ -5,6 +5,13 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/sinusbot/docker.svg)](https://hub.docker.com/r/sinusbot/docker)
 [![Image Info](https://images.microbadger.com/badges/image/sinusbot/docker.svg)](https://microbadger.com/images/sinusbot/docker)
 
+## Features
+
+- Easy Updateable
+- Minimal dependencies to the Host system
+- Integrated Text-to-Speech engine
+- Compatible with macOS
+
 ## Installation
 
 By using this image you accept the [Privacy statement of the TeamSpeak Systems GmbH](https://www.teamspeak.com/en/privacy-and-terms) and the license agreement of the SinusBot.
