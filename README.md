@@ -29,6 +29,16 @@ docker run -d -p 8087:8087 \
            --name sinusbot sinusbot/docker
 ```
 
+It is recommended that you run the SinusBot as a non-root user, even though the docker container is mostly isolated from the host.
+This can be done as described in the following:
+
+- add a new user: `adduser --disabled-login sinusbot`
+- create the required folders if they don't exist: `mkdir -p /opt/sinusbot/data /opt/sinusbot/scripts`
+- give the user permissions to the folders: `chown -R sinusbot:sinusbot /opt/sinusbot`
+- add `-u sinusbot` to the docker run command shown above when you start it
+
+Additional information on [setting the user](https://docs.docker.com/engine/reference/run/#user) or [remapping the user](https://docs.docker.com/engine/security/userns-remap/) can be found in the docker documentation.
+
 ## Get Password
 
 After starting the SinusBot docker image with `docker run` an ID will be returned in the next line.
