@@ -6,7 +6,7 @@ case "$1" in
 
 "sinusbot")
 	echo "Downloading SinusBot..."
-	curl -s https://www.sinusbot.com/pre/sinusbot-1.0.0-alpha.6-5ddc294.tar.bz2 | tar xj
+	curl -s https://www.sinusbot.com/dl/sinusbot.current.tar.bz2 | tar xj
 	chmod 755 sinusbot
 	mv scripts default_scripts
 	ln -s data/private.dat private.dat
