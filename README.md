@@ -14,7 +14,7 @@
 
 ## Installation
 
-By using this image you accept the [Privacy statement of the TeamSpeak Systems GmbH](https://www.teamspeak.com/en/privacy-and-terms) and the license agreement of the SinusBot.
+By using this image you accept the [Privacy statement of the TeamSpeak Systems GmbH](https://www.teamspeak.com/en/privacy-and-terms), the [SinusBot Privacy Policy](https://forum.sinusbot.com/help/privacy-policy/) and the license agreement.
 
 ### docker-compose
 
@@ -42,7 +42,7 @@ Additional information on [setting the user](https://docs.docker.com/engine/refe
 ## Get Password
 
 After starting the SinusBot docker image with `docker run` an ID will be returned in the next line.
-Use the command `docker logs <ID>` (replace `<ID>` with the long container ID) to print out the logs of the container.
+Use the command `docker logs sinusbot` to print out the logs of the container.
 The beginning of the log should contain your credentials:
 
 ```txt
@@ -54,7 +54,7 @@ PLEASE MAKE SURE TO CHANGE THE PASSWORD DIRECTLY AFTER YOUR FIRST LOGIN!!!
 [...]
 ```
 
-## Password overriding
+## Override Password
 
 By setting the `OVERRIDE_PASSWORD` environment variable you can override the password of the SinusBot. Usage:
 
@@ -68,8 +68,9 @@ docker run -d -p 8087:8087 \
 
 ## License
 
-To use your license, which you've got from the [forums](https://forum.sinusbot.com/license) just drop the `private.dat` into the data folder.
-After that you can restart the SinusBot and the license should be applied.
+To use your [license](https://sinusbot.github.io/docs/licenses/), which you've got from the [License Page in the Forum](https://forum.sinusbot.com/license), you need to save the `private.dat` into the data folder.
+
+After restarting the container (`docker restart sinusbot`) your licensed instances should appear automatically.
 
 ## Discord only image
 
@@ -83,25 +84,41 @@ docker run -d -p 8087:8087 \
            --name sinusbot sinusbot/docker:discord
 ```
 
-## Updating the image
+## Updating
 
-Run the following command to update the image to the latest version:
+Docker containers themselves should not store application data, instead the data is stored in volumes (in this case `scripts` and `data`).
+To upgrade a container you need to remove and re-run it as shown below.
 
-```bash
-docker pull sinusbot/docker
-```
+1. Stop and remove the old container.
 
-After that you just need to restart your container, by executing the following command:
+    ```bash
+    docker stop sinusbot
+    docker rm sinusbot
+    ```
 
-```bash
-docker restart CONTAINER_NAME
-```
+2. Pull the latest image:
+
+    ```bash
+    docker pull sinusbot/docker
+    ```
+
+3. Create a new container with your volumes.
+
+    ```bash
+    docker run --rm -d -p 8087:8087 \
+              -v scripts:/opt/sinusbot/scripts \
+              -v data:/opt/sinusbot/data \
+              --name sinusbot sinusbot/docker
+    ```
+
+*It is also possible to automate this process by running [Watchtower](https://containrrr.github.io/watchtower/).*
 
 ## Text-to-Speech
 
-Per default, there is the Chromium Text-to-Speech engine pre installed. It can be simply enabled by setting the `TTS.Enabled` property in the `config.ini` of the `data` volume to `true`. It's per default disabled due performance issues / memory costs.
+The Chromium Text-to-Speech engine is pre-installed but disabled by default due to higher cpu/memory usage.
 
-Once it's enabled it can be used by setting in the Instance settings `en-US` or `de-DE` as locale.
+To enable it you simply need to set the `TTS.Enabled` property to `true` in the `config.ini` stored in the `data` volume (`/opt/sinusbot/data`) and restart your container (`docker restart sinusbot`).
+Once it's enabled it can be used by setting the locale to `en-US` or `de-DE` in the instance settings.
 
 ## Other Docker registries
 
@@ -113,12 +130,6 @@ Can be pulled by using:
 
 ```bash
 docker pull quay.io/sinusbot/docker
-```
-
-Also the discord image is available on the `discord` tag:
-
-```bash
-docker pull quay.io/sinusbot/docker:discord
 ```
 
 For using docker-compose with [quay.io](https://quay.io) just replace `sinusbot/docker` with `quay.io/sinusbot/docker`. Example:
@@ -137,7 +148,7 @@ sinusbot:
 
 ## docker-compose with TeamSpeak 3 Server
 
-In the SinusBot you have to use the network alias `teamspeak.docker.local` as hostname. 
+In the SinusBot you have to use the network alias `teamspeak.docker.local` as hostname.
 
 ```yaml
 # docker-compose.yml
