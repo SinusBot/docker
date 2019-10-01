@@ -1,7 +1,7 @@
 FROM debian:stretch-slim
 
 LABEL maintainer="Max Schmitt <max@schmitt.mx>"
-LABEL description="SinusBot Docker Image for Discord only."
+LABEL description="SinusBot - Discord only image"
 
 # Install dependencies and clean up afterwards
 RUN apt-get update && \
