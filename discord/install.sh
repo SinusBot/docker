@@ -2,12 +2,13 @@
 
 set -e
 
+SINUSBOT_VERSION="1.0.0-beta.6-f290553"
+
 case "$1" in
 
 "sinusbot")
 	echo "Downloading SinusBot..."
-	VERSION="1.0.0-beta.6-f290553"
-	curl -s "https://www.sinusbot.com/pre/sinusbot-$VERSION.tar.bz2" | tar xj
+	curl -s "https://www.sinusbot.com/pre/sinusbot-$SINUSBOT_VERSION.tar.bz2" | tar xj
 	chmod 755 sinusbot
 	mv scripts default_scripts
 	ln -s data/private.dat private.dat
