@@ -66,7 +66,7 @@ This can be done as described in the following:
   docker run -d -p 8087:8087 \
              -v scripts:/opt/sinusbot/scripts \
              -v data:/opt/sinusbot/data \
-             -e UID=$(id -u sinusbot)
+             -e UID=$(id -u sinusbot) \
              -e GID=$(id -g sinusbot) \
              --name sinusbot \
              sinusbot/docker
