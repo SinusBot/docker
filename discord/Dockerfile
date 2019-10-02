@@ -1,6 +1,5 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
-LABEL maintainer="Max Schmitt <max@schmitt.mx>"
 LABEL description="SinusBot - Discord only image"
 LABEL version="1.0.0-beta.6-f290553"
 
