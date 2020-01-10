@@ -5,7 +5,7 @@ set -ex
 VERSION="$1"
 
 if [[ -z "$VERSION" ]]; then
-    echo "Usage: ./release.sh <version>"
+    echo "Usage: ./release_as_latest.sh <version>"
     exit 1
 fi
 

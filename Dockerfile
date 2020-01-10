@@ -1,7 +1,7 @@
-FROM sinusbot/docker:1.0.0-beta.6-f290553-discord
+FROM sinusbot/docker:1.0.0-beta.10-202ee4d-discord
 
 LABEL description="SinusBot - TeamSpeak 3 and Discord music bot."
-LABEL version="1.0.0-beta.6-f290553"
+LABEL version="1.0.0-beta.10-202ee4d"
 
 # Install dependencies and clean up afterwards
 RUN apt-get update && \

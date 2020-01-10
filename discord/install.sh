@@ -2,7 +2,7 @@
 
 set -e
 
-SINUSBOT_VERSION="1.0.0-beta.6-f290553"
+SINUSBOT_VERSION="1.0.0-beta.10-202ee4d"
 
 case "$1" in
 
