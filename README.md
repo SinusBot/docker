@@ -16,7 +16,7 @@
 
 By using this image you accept the [Privacy statement of the TeamSpeak Systems GmbH](https://www.teamspeak.com/en/privacy-and-terms), the [SinusBot Privacy Policy](https://forum.sinusbot.com/help/privacy-policy/) and SinusBot license agreement.
 
-> © 2013-2019 Michael Friese. All rights reserved. (https://www.sinusbot.com)
+> © 2013-2020 Michael Friese. All rights reserved. (https://www.sinusbot.com)
 >
 > This software is free for personal use only. If you want to use it commercially, please contact the author.
 >
@@ -40,8 +40,8 @@ Download the [docker-compose file](https://github.com/SinusBot/docker/blob/maste
 
 ```bash
 docker run -d -p 8087:8087 \
-           -v scripts:/opt/sinusbot/scripts \
-           -v data:/opt/sinusbot/data \
+           -v /opt/sinusbot/scripts:/opt/sinusbot/scripts \
+           -v /opt/sinusbot/data:/opt/sinusbot/data \
            --name sinusbot \
            sinusbot/docker
 ```
@@ -64,8 +64,8 @@ This can be done as described in the following:
 
   ```bash
   docker run -d -p 8087:8087 \
-             -v scripts:/opt/sinusbot/scripts \
-             -v data:/opt/sinusbot/data \
+             -v /opt/sinusbot/scripts:/opt/sinusbot/scripts \
+             -v /opt/sinusbot/data:/opt/sinusbot/data \
              -e UID=$(id -u sinusbot) \
              -e GID=$(id -g sinusbot) \
              --name sinusbot \
@@ -101,8 +101,8 @@ By setting the `OVERRIDE_PASSWORD` environment variable you can override the pas
 
 ```bash
 docker run -d -p 8087:8087 \
-           -v scripts:/opt/sinusbot/scripts \
-           -v data:/opt/sinusbot/data \
+           -v /opt/sinusbot/scripts:/opt/sinusbot/scripts \
+           -v /opt/sinusbot/data:/opt/sinusbot/data \
            -e OVERRIDE_PASSWORD=foobar \
            --name sinusbot sinusbot/docker
 ```
@@ -134,8 +134,8 @@ To upgrade a container you need to remove and re-run it as shown below.
 
     ```bash
     docker run --rm -d -p 8087:8087 \
-              -v scripts:/opt/sinusbot/scripts \
-              -v data:/opt/sinusbot/data \
+              -v /opt/sinusbot/scripts:/opt/sinusbot/scripts \
+              -v /opt/sinusbot/data:/opt/sinusbot/data \
               --name sinusbot sinusbot/docker
     ```
 
@@ -157,8 +157,8 @@ To use it you just have to use the `discord` tag instead of `latest` (default) t
 
 ```bash
 docker run -d -p 8087:8087 \
-           -v scripts:/opt/sinusbot/scripts \
-           -v data:/opt/sinusbot/data \
+           -v /opt/sinusbot/scripts:/opt/sinusbot/scripts \
+           -v /opt/sinusbot/data:/opt/sinusbot/data \
            --name sinusbot sinusbot/docker:discord
 ```
 
@@ -184,8 +184,8 @@ sinusbot:
   ports:
     - 8087:8087
   volumes:
-    - ./scripts:/opt/sinusbot/scripts
-    - ./data:/opt/sinusbot/data
+    - /opt/sinusbot/scripts:/opt/sinusbot/scripts
+    - /opt/sinusbot/data:/opt/sinusbot/data
 ```
 
 ## docker-compose with TeamSpeak 3 Server
@@ -216,8 +216,8 @@ services:
     ports:
       - 8087:8087
     volumes:
-      - ./scripts:/opt/sinusbot/scripts
-      - ./data:/opt/sinusbot/data
+      - /opt/sinusbot/scripts:/opt/sinusbot/scripts
+      - /opt/sinusbot/data:/opt/sinusbot/data
     networks:
      - mynetwork
 networks:
