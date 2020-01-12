@@ -31,5 +31,5 @@ VOLUME ["/opt/sinusbot/data", "/opt/sinusbot/scripts"]
 
 ENTRYPOINT ["/opt/sinusbot/entrypoint.sh"]
 
-HEALTHCHECK --interval=1m --timeout=5s \
-  CMD curl -f http://localhost:8087/api/v1/botId || exit 1
+HEALTHCHECK --interval=1m --timeout=10s \
+  CMD curl --no-keepalive -f http://localhost:8087/api/v1/botId || exit 1
