@@ -1,3 +1,4 @@
 # docker-compose local volume names
 data
 scripts
+.vscode

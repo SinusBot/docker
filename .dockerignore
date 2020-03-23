@@ -1,4 +1,7 @@
 .git/
+discord/
 LICENSE
 README.md
-release.sh
+install.sh
+release_as_latest.sh
+release_version.sh
