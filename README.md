@@ -7,7 +7,7 @@
 
 ## Features
 
-- Easy Updateable
+- Easily updatable (see [instructions](#Updating) below)
 - Minimal dependencies to the Host system
 - Integrated Text-to-Speech engine
 - Compatible with macOS
@@ -75,7 +75,7 @@ This can be done as described in the following:
 #### Tags
 
 - `latest` is the default tag
-- `discord` is a discord-only version of `latest` and does not contain the TeamSpeak client with additonal dependencies
+- `discord` is a discord-only version of `latest` and does not contain the TeamSpeak client with additional dependencies
 - every release is tagged with it's version (for example:  `1.0.0-beta.6-f290553`) and a discord-only tag (for example:  `1.0.0-beta.6-f290553-discord`)
 
 You view the [full list of tags](https://hub.docker.com/r/sinusbot/docker/tags) for specific versions.
@@ -152,7 +152,7 @@ Once it's enabled it can be used by setting the locale to `en-US` or `de-DE` in 
 
 [![Image Info](https://images.microbadger.com/badges/image/sinusbot/docker:discord.svg)](https://microbadger.com/images/sinusbot/docker:discord)
 
-There is an image for discord only usage, this won't contain the TeamSpeak client with the additonal dependencies.
+There is an image for discord only usage, this won't contain the TeamSpeak client with the additional dependencies.
 To use it you just have to use the `discord` tag instead of `latest` (default) tag:
 
 ```bash
