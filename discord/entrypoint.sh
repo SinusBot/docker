@@ -15,6 +15,9 @@ ln -fs data/config.ini config.ini
 echo "Updating youtube-dl..."
 youtube-dl --restrict-filename -U
 
+echo "Clearing youtube-dl Cache..."
+youtube-dl --rm-cache-dir
+
 PID=0
 
 # graceful shutdown
