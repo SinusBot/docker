@@ -56,6 +56,9 @@ if [[ -v UID ]] || [[ -v GID ]]; then
   SINUSBOT="$SETPRIV $SINUSBOT"
 fi
 
+echo "Clearing youtube-dl Cache..."
+youtube-dl --rm-cache-dir
+
 echo "Starting SinusBot..."
 if [[ -v OVERRIDE_PASSWORD ]]; then
   echo "Overriding password..."
