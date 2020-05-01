@@ -12,8 +12,12 @@ fi
 
 ln -fs data/config.ini config.ini
 
+SINUSBOT="./sinusbot"
+$YTDL="youtube-dl"
+
 echo "Updating youtube-dl..."
-youtube-dl --restrict-filename -U
+$YTDL --restrict-filename -U
+$YTDL --version
 
 PID=0
 
@@ -29,8 +33,6 @@ kill_handler() {
 
 trap 'kill ${!}; kill_handler' SIGTERM # docker stop
 trap 'kill ${!}; kill_handler' SIGINT  # CTRL + C
-
-SINUSBOT="./sinusbot"
 
 if [[ -v UID ]] || [[ -v GID ]]; then
   SETPRIV="setpriv --clear-groups --inh-caps=-all"
@@ -51,7 +53,11 @@ if [[ -v UID ]] || [[ -v GID ]]; then
   fi
   echo "Drop privileges..."
   SINUSBOT="$SETPRIV $SINUSBOT"
+  YTDL="$SETPRIV $YTDL"
 fi
+
+echo "Clearing youtube-dl cache..."
+$YTDL --rm-cache-dir
 
 echo "Starting SinusBot..."
 if [[ -v OVERRIDE_PASSWORD ]]; then
