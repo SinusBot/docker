@@ -13,7 +13,7 @@ fi
 ln -fs data/config.ini config.ini
 
 SINUSBOT="./sinusbot"
-$YTDL="youtube-dl"
+YTDL="youtube-dl"
 
 echo "Updating youtube-dl..."
 $YTDL --restrict-filename -U
