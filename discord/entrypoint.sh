@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# print kernel/system info
+uname -srmo
+date
+
 if [ -d "default_scripts" ]; then
   mv default_scripts/* scripts
   rm -r default_scripts
@@ -21,7 +25,7 @@ $YTDL --version
 
 PID=0
 
-# graceful shutdown
+# graceful shutdown on kill
 kill_handler() {
   echo "Shutting down..."
   kill -s SIGINT -$(ps -o pgid= $PID | grep -o '[0-9]*')
@@ -35,7 +39,12 @@ trap 'kill ${!}; kill_handler' SIGTERM # docker stop
 trap 'kill ${!}; kill_handler' SIGINT  # CTRL + C
 
 if [[ -v UID ]] || [[ -v GID ]]; then
-  SETPRIV="setpriv --clear-groups --inh-caps=-all"
+  # WORKAROUND for `setpriv: libcap-ng is too old for "all" caps`, previously "-all" was used here
+  # create a list to drop all capabilities supported by current kernel
+  cap_prefix="-cap_"
+  caps="$cap_prefix$(seq -s ",$cap_prefix" 0 $(cat /proc/sys/kernel/cap_last_cap))"
+
+  SETPRIV="setpriv --clear-groups --inh-caps=$caps"
 
   # set user id
   if [[ -v UID ]]; then
