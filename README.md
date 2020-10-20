@@ -28,11 +28,7 @@ By using this image you accept the [Privacy statement of the TeamSpeak Systems G
 
 *Discord is © Hammer & Chisel Inc. This product and the author is in no way affiliated with Hammer & Chisel Inc.*
 
-## Installation
-
-### docker-compose
-
-Download the [docker-compose file](https://github.com/SinusBot/docker/blob/master/docker-compose.yml) in it's own directory and start it with `docker-compose up`.
+## Usage
 
 ### docker
 
@@ -71,6 +67,10 @@ This can be done as described in the following:
              --name sinusbot \
              sinusbot/docker
   ```
+
+### docker-compose
+
+Download the [docker-compose file](docker-compose.yml) in it's own directory and start it with `docker-compose up`.
 
 #### Tags
 
@@ -130,14 +130,7 @@ To upgrade a container you need to remove and re-run it as shown below.
     docker pull sinusbot/docker
     ```
 
-3. Create a new container with your volumes.
-
-    ```bash
-    docker run --rm -d -p 8087:8087 \
-              -v /opt/sinusbot/scripts:/opt/sinusbot/scripts \
-              -v /opt/sinusbot/data:/opt/sinusbot/data \
-              --name sinusbot sinusbot/docker
-    ```
+3. Create a new container with your volumes as described in the [usage](#usage) section above.
 
 *It is also possible to automate this process by running [Watchtower](https://containrrr.github.io/watchtower/).*
 
@@ -224,3 +217,20 @@ networks:
     mynetwork:
         driver: bridge
 ```
+
+## Development
+
+### Deploy Version
+
+To build and release a new version, clone this repository and run:
+
+```bash
+docker login
+./release_as_latest.sh <VERSION>
+```
+
+Replace `<VERSION>` with the version, e.g. `1.0.0-beta.10-202ee4d`.
+
+This will build and upload the following tags: `<VERSION>-discord`, `<VERSION>`, `discord`, `latest`
+
+`./release_version.sh` does the same but without setting `discord`, `latest`.
