@@ -72,11 +72,19 @@ This can be done as described in the following:
 
 Download the [docker-compose file](docker-compose.yml) in it's own directory and start it with `docker-compose up`.
 
-#### Tags
+To run via docker-compose as a non-root user, follow the docker instruction above to create a `sinusbot` user. Then append the following to your `docker-compose.yml`:
+
+```yaml
+  environment:
+    UID: # insert output of `id -u sinusbot`
+    GID: # insert output of `id -g sinusbot`
+```
+
+## Tags
 
 - `latest` is the default tag
 - `discord` is a discord-only version of `latest` and does not contain the TeamSpeak client with additional dependencies
-- every release is tagged with it's version (for example:  `1.0.0-beta.6-f290553`) and a discord-only tag (for example:  `1.0.0-beta.6-f290553-discord`)
+- every release is tagged with it's version (for example: `1.0.0-beta.6-f290553`) and a discord-only tag (for example: `1.0.0-beta.6-f290553-discord`)
 
 You view the [full list of tags](https://hub.docker.com/r/sinusbot/docker/tags) for specific versions.
 
