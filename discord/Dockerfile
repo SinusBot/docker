@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 
 LABEL description="SinusBot - Discord only image"
-LABEL version="1.0.0-beta.10-202ee4d"
+LABEL version="1.0.0-beta.14-dc94a7c"
 
 # Install dependencies and clean up afterwards
 RUN apt-get update && \
