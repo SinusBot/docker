@@ -1,7 +1,5 @@
 # SinusBot Docker image
 
-[![Docker Automated build](https://img.shields.io/docker/automated/sinusbot/docker.svg)](https://hub.docker.com/r/sinusbot/docker)
-[![Docker Build Status](https://img.shields.io/docker/build/sinusbot/docker.svg)](https://hub.docker.com/r/sinusbot/docker/builds)
 [![Docker Pulls](https://img.shields.io/docker/pulls/sinusbot/docker.svg)](https://hub.docker.com/r/sinusbot/docker)
 [![Image Info](https://images.microbadger.com/badges/image/sinusbot/docker.svg)](https://microbadger.com/images/sinusbot/docker)
 
@@ -16,7 +14,7 @@
 
 By using this image you accept the [Privacy statement of the TeamSpeak Systems GmbH](https://www.teamspeak.com/en/privacy-and-terms), the [SinusBot Privacy Policy](https://forum.sinusbot.com/help/privacy-policy/) and SinusBot license agreement.
 
-> © 2013-2020 Michael Friese. All rights reserved. (https://www.sinusbot.com)
+> © 2013-2021 Michael Friese. All rights reserved. (https://www.sinusbot.com)
 >
 > This software is free for personal use only. If you want to use it commercially, please contact the author.
 >
@@ -161,32 +159,6 @@ docker run -d -p 8087:8087 \
            -v /opt/sinusbot/scripts:/opt/sinusbot/scripts \
            -v /opt/sinusbot/data:/opt/sinusbot/data \
            --name sinusbot sinusbot/docker:discord
-```
-
-## Other Docker registries
-
-### QUAY
-
-[![Docker Repository on Quay](https://quay.io/repository/sinusbot/docker/status "Docker Repository on Quay")](https://quay.io/repository/sinusbot/docker)
-
-Can be pulled by using:
-
-```bash
-docker pull quay.io/sinusbot/docker
-```
-
-For using docker-compose with [quay.io](https://quay.io) just replace `sinusbot/docker` with `quay.io/sinusbot/docker`. Example:
-
-```yaml
-# docker-compose.yml
-sinusbot:
-  image: quay.io/sinusbot/docker
-  restart: always
-  ports:
-    - 8087:8087
-  volumes:
-    - /opt/sinusbot/scripts:/opt/sinusbot/scripts
-    - /opt/sinusbot/data:/opt/sinusbot/data
 ```
 
 ## docker-compose with TeamSpeak 3 Server
