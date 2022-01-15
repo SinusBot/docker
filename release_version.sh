@@ -28,7 +28,7 @@ sed -i '' "s|^LABEL version.*|LABEL version=\"$VERSION\"|g" Dockerfile
 read -p "Show diff? [y/N] " -n 1 -r
 echo
 if [[ $REPLY =~ ^([Yy]) ]]; then
-    git diff --staged
+    git diff
 fi
 
 read -p "Commit changes? [Y/n] " -n 1 -r
