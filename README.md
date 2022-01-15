@@ -1,7 +1,6 @@
 # SinusBot Docker image
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/sinusbot/docker.svg)](https://hub.docker.com/r/sinusbot/docker)
-[![Image Info](https://images.microbadger.com/badges/image/sinusbot/docker.svg)](https://microbadger.com/images/sinusbot/docker)
 
 ## Features
 
@@ -148,8 +147,6 @@ To enable it you simply need to set the `TTS.Enabled` property to `true` in the 
 Once it's enabled it can be used by setting the locale to `en-US` or `de-DE` in the instance settings.
 
 ## Discord only image
-
-[![Image Info](https://images.microbadger.com/badges/image/sinusbot/docker:discord.svg)](https://microbadger.com/images/sinusbot/docker:discord)
 
 There is an image for discord only usage, this won't contain the TeamSpeak client with the additional dependencies.
 To use it you just have to use the `discord` tag instead of `latest` (default) tag:
