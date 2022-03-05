@@ -10,3 +10,9 @@ RUN apt-get update && \
 
 # Download/Install TeamSpeak Client
 RUN bash install.sh teamspeak
+
+ADD additional-install.sh .
+RUN chmod 755 additional-install.sh
+
+# Download/Install yt-dlp
+RUN bash install.sh yt-dlp
