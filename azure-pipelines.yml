@@ -1,0 +1,23 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: DockerInstaller@0
+  displayName: Install docker cli
+  inputs:
+    dockerVersion: '17.09.0-ce'
+- task: Docker@2
+  displayName: Build Dockerfile
+  inputs:
+    containerRegistry: 'docker darkstarx100'
+    repository: 'sinusbot.docker'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
