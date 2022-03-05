@@ -9,6 +9,9 @@
 - Integrated Text-to-Speech engine
 - Compatible with macOS
 
+## Addtional Features
+- Option to switch to yt-dlp
+
 ## Disclaimer
 
 By using this image you accept the [Privacy statement of the TeamSpeak Systems GmbH](https://www.teamspeak.com/en/privacy-and-terms), the [SinusBot Privacy Policy](https://forum.sinusbot.com/help/privacy-policy/) and SinusBot license agreement.
