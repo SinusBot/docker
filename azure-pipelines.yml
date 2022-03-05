@@ -18,6 +18,6 @@ steps:
   displayName: Build Dockerfile
   inputs:
     containerRegistry: 'docker darkstarx100'
-    repository: 'sinusbot.docker'
+    repository: 'darkstarx100/sinusbot.docker'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
