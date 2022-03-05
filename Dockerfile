@@ -15,4 +15,4 @@ ADD additional-install.sh .
 RUN chmod 755 additional-install.sh
 
 # Download/Install yt-dlp
-RUN bash install.sh yt-dlp
+RUN bash additional-install.sh yt-dlp
