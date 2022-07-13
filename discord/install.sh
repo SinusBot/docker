@@ -59,6 +59,13 @@ EOT
 	echo 'YoutubeDLPath = "/usr/local/bin/youtube-dl"' >> config.ini.configured
 	echo "Successfully installed youtube-dl"
 	;;
+"yt-dlp")
+	echo "Downloading yt-dlp..."
+	curl -s -L -o /usr/local/bin/yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp
+	chmod 755 /usr/loca/bin/youtube-dl
+	echo 'YoutubeDLPath = "/usr/loca/bin/yt-dlp"' >> config.ini.configured
+	echo "Successfully installed yt-dlp"
+	;;
 "teamspeak")
 	echo "Installing TeamSpeak Client..."
 	# Get latest TeamSpeak client download URL
