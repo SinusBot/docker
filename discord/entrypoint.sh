@@ -17,9 +17,9 @@ fi
 ln -fs data/config.ini config.ini
 
 SINUSBOT="./sinusbot"
-YTDL="youtube-dl"
+YTDL="yt-dlp"
 
-echo "Updating youtube-dl..."
+echo "Updating yt-dlp..."
 $YTDL --restrict-filename -U
 $YTDL --version
 
@@ -65,7 +65,7 @@ if [[ -v UID ]] || [[ -v GID ]]; then
   YTDL="$SETPRIV $YTDL"
 fi
 
-echo "Clearing youtube-dl cache..."
+echo "Clearing yt-dlp cache..."
 $YTDL --rm-cache-dir
 
 echo "Starting SinusBot..."

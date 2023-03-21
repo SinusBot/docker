@@ -1,11 +1,11 @@
 FROM debian:buster-slim
 
 LABEL description="SinusBot - Discord only image"
-LABEL version="1.0.0-beta.16-ba60e37"
+LABEL version="1.0.2-amd64"
 
 # Install dependencies and clean up afterwards
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates bzip2 unzip curl python procps libpci3 libxslt1.1 libxkbcommon0 locales && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates bzip2 unzip curl python3 procps libpci3 libxslt1.1 libxkbcommon0 locales && \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 # Set locale
@@ -22,8 +22,8 @@ RUN chmod 755 install.sh
 # Download/Install SinusBot
 RUN bash install.sh sinusbot
 
-# Download/Install youtube-dl
-RUN bash install.sh youtube-dl
+# Download/Install yt-dlp
+RUN bash install.sh yt-dlp
 
 # Download/Install Text-to-Speech
 RUN bash install.sh text-to-speech
