@@ -18,6 +18,7 @@ case "$1" in
 	;;
 "text-to-speech")
 	echo "Installing Text-to-Speech..."
+	mkdir -p tts
 	cd tts
 	mkdir tmp
 	cd tmp

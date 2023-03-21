@@ -50,9 +50,9 @@ read -p "Build images? [Y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^([Yy]| ) ]] || [[ -z $REPLY ]]; then
     docker pull debian:buster-slim
-    docker build -t "$IMAGE":discord discord
+    docker build --platform linux/amd64 -t "$IMAGE":discord discord
     docker tag "$IMAGE":discord "$IMAGE":"$VERSION"-discord
-    docker build -t "$IMAGE":latest .
+    docker build --platform linux/amd64 -t "$IMAGE":latest .
     docker tag "$IMAGE":latest "$IMAGE":"$VERSION"
 
     read -p "Push the builds to docker? (requires docker login) [Y/n] " -n 1 -r
